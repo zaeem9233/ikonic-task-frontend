@@ -67,7 +67,9 @@ export default {
           password: this.password,
         });
         const token = response.data.token;
+        const user_id = response.data.id;
         localStorage.setItem('token', token);
+        localStorage.setItem('user_id', user_id);
         this.$router.push('/feedbacks');
       }catch(error){
         if (error.response && error.response.status === 422) {
