@@ -4,6 +4,9 @@
     <div class="bg-gray-200 flex flex-col min-h-screen">
       <div class="flex-grow">
         <NavBar />
+        <div>
+          <router-view></router-view>
+        </div>
       </div>
       <FooterBar />
     </div>

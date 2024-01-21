@@ -1,13 +1,5 @@
 <template>
   <div>
-    <NavBar />
-
-    <FooterBar />
+    <h1 class="text-3xl">Home Page</h1>
   </div>
 </template>
-
-<script>
-  import NavBar from './components/Navbar'
-  import FooterBar from './components/FooterBar'
-
-</script>

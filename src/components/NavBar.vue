@@ -10,19 +10,19 @@
           <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
              
              <li>
-                <a class="hover:text-gray-500" href="#!">
+                <router-link class="hover:text-gray-500" to="/">
                    Home
-                </a>
+                </router-link>
              </li>
 
              <li>
-                <a class="hover:text-gray-500" href="#!">
+                <a class="hover:text-gray-500" href="/feedbacks">
                    Feedbacks
                 </a>
              </li>
              
              <li>
-                <a class="hover:text-gray-500" href="#!">
+                <a class="hover:text-gray-500" href="/create">
                    Create
                 </a>
              </li>
@@ -31,9 +31,9 @@
        </div>
 
        <div class="flex items-center gap-6">
-          <button class="bg-blue-500 text-white py-2 rounded-full px-3 hover:bg-blue-700">
+          <router-link to="/login" class="bg-blue-500 text-white py-2 rounded-full px-3 hover:bg-blue-700">
              Sign in
-          </button>
+          </router-link>
 
           <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
        </div>
