@@ -13,10 +13,6 @@
       <div class="my-2">
         <input type="text" placeholder="Email" class="custom-input">
       </div>
-
-      <div class="my-2">
-        <input type="text" placeholder="Username" class="custom-input">
-      </div>
      
       <div class="my-2">
         <input type="text" placeholder="Password" class="custom-input">
