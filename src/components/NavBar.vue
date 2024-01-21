@@ -28,12 +28,23 @@
 
          <div class="flex items-center gap-6">
 
-            <router-link to="/login" class="bg-blue-500 text-white py-2 rounded-md px-3 hover:bg-blue-700">
-               Sign in
-            </router-link>
+            <button @click="logout" class="bg-gray-500 text-white py-2 rounded-md px-3 hover:bg-gray-700">
+               Logout
+            </button>
 
          </div>
 
       </nav>
    </header>
 </template>
+
+<script>
+   export default{
+      methods: {
+         logout() {
+            localStorage.removeItem('token');
+            this.$router.push('/login');
+         },
+      },
+   }
+</script>
