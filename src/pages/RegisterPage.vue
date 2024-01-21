@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen flex items-center justify-center">
-    <div class="md:w-1/3 sm:w-1/2 w-[92%] bg-white text-center p-5 rounded-md">
+    <div class="md:w-1/3 sm:w-1/2 w-[92%] bg-white text-center p-5 rounded-md  shadow-md">
       
       <LogoHome />
       
@@ -30,10 +30,6 @@
         
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4" type="submit">
            Register
-        </button>
-
-        <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-4" type="reset">
-           Reset
         </button>
 
       </div>
