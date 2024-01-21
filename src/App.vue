@@ -1,13 +1,24 @@
 <!-- src/App.vue -->
 <template>
-  <div class="bg-gray-200 p-4">
-    <h1 class="text-6xl font-bold">Hello Tailwind CSS!</h1>
-    <p class="text-lg mt-2">This is a Vue.js project with Tailwind CSS.</p>
+  <div id="app">
+    <div class="bg-gray-200 flex flex-col min-h-screen">
+      <div class="flex-grow">
+        <NavBar />
+      </div>
+      <FooterBar />
+    </div>
   </div>
 </template>
 
 <script>
+import NavBar from '@/components/NavBar'
+import FooterBar from '@/components/FooterBar'
+
 export default {
   name: 'App',
+  components: {
+    NavBar,
+    FooterBar
+  }
 };
 </script>
