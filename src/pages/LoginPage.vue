@@ -7,7 +7,7 @@
       <h1 class="text-2xl font-bold mb-8">Login</h1>
       
       <div class="my-2">
-        <input type="text" placeholder="Username" class="custom-input">
+        <input type="text" placeholder="Email" class="custom-input">
      </div>
      
      <div class="my-2">
