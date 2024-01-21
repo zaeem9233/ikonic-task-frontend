@@ -8,7 +8,7 @@
             </router-link>
          </div>
 
-         <div class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-40 left-0 top-[-100%] md:w-auto  w-full flex items-center px-5">
+         <div class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-40 left-0 top-[-100%] md:w-auto  w-full flex items-center px-5" :class="{ 'top-[8%]': isMenuOpen }">
             <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
 
                <li>
@@ -32,6 +32,13 @@
                Logout
             </button>
 
+            <div v-if="isMenuOpen==false" class="text-blue-500 text-3xl cursor-pointer md:hidden">
+               <ion-icon @click="onToggleMenu" name="menu"></ion-icon>
+            </div>
+            <div v-else class="text-blue-500 text-3xl cursor-pointer md:hidden">
+               <ion-icon @click="onToggleMenu" name="close"></ion-icon>
+            </div>
+
          </div>
 
       </nav>
@@ -40,11 +47,19 @@
 
 <script>
    export default{
+      data() {
+         return {
+            isMenuOpen: false,
+         }
+      },
       methods: {
          logout() {
             localStorage.removeItem('token');
             this.$router.push('/login');
          },
+         onToggleMenu(){
+            this.isMenuOpen = !this.isMenuOpen;
+         }
       },
    }
 </script>
