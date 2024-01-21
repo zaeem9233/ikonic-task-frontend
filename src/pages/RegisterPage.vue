@@ -6,29 +6,44 @@
       
       <h1 class="text-2xl font-bold mb-8">Register</h1>
       
-      <div class="my-2">
-        <input type="text" placeholder="Full Name" class="custom-input">
-      </div>
+      <form @submit.prevent="register">
+        <div class="my-2">
+          <input v-model="name" type="text" placeholder="Full Name" class="custom-input">
+          <div v-if="errors.name" class="flex items-center justify-start">
+            <span class="text-red-500">{{ errors.name[0] }}</span>
+          </div>
+        </div>
+  
+        <div class="my-2">
+          <input v-model="email" type="text" placeholder="Email" class="custom-input">
+          <div v-if="errors.email" class="flex items-center justify-start">
+            <span class="text-red-500">{{ errors.email[0] }}</span>
+          </div>
+        </div>
+       
+        <div class="my-2">
+          <input v-model="password" type="password" placeholder="Password" class="custom-input">
+          <div v-if="errors.password" class="flex items-center justify-start">
+            <span class="text-red-500">{{ errors.password[0] }}</span>
+          </div>
+        </div>
+  
+        <div class="my-2">
+          <input v-model="password_confirmation" type="password" placeholder="Confirm Password" class="custom-input">
+          <div v-if="errors.password_confirmation" class="flex items-center justify-start">
+            <span class="text-red-500">{{ errors.password[0] }}</span>
+          </div>
+        </div>
+  
+        <div class="flex items-center justify-center mt-2">
+          
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4" type="submit">
+             Register
+          </button>
+  
+        </div>
+      </form>
 
-      <div class="my-2">
-        <input type="text" placeholder="Email" class="custom-input">
-      </div>
-     
-      <div class="my-2">
-        <input type="text" placeholder="Password" class="custom-input">
-      </div>
-
-      <div class="my-2">
-        <input type="text" placeholder="Confirm Password" class="custom-input">
-      </div>
-
-      <div class="flex items-center justify-center mt-2">
-        
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4" type="submit">
-           Register
-        </button>
-
-      </div>
 
       <div class="border-t border-gray-200 mt-3">
         <router-link to="/login">
@@ -46,6 +61,36 @@ import LogoHome from '@/components/LogoHome.vue';
 export default {
   components: {
     LogoHome
+  },
+  data() {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      password_confirmation: '',
+      errors: {}
+    }
+  },
+  methods: {
+    async register(){
+      try {
+        const response = await this.$axios.post('http://127.0.0.1:8000/api/v1/register', {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.password_confirmation,
+        });
+        const token = response.data.token;
+        localStorage.setItem('token', token);
+        this.$router.push('/feedbacks');
+      }catch(error){
+        if (error.response && error.response.status === 422) {
+          this.errors = error.response.data.errors;
+        } else {
+          console.error('Registration failed:', error.response ? error.response.data : error.message);
+        }
+      }
+    }
   }
 }
 </script>
