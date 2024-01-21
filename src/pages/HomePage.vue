@@ -1,9 +1,8 @@
 <template>
   <div class="h-screen flex items-center justify-center">
-    <div class="md:w-1/3 w-1/1 bg-white text-center p-5 rounded-md">
-      <div class="flex justify-center">
-        <img class="w-60" src="/logo.png" alt="Logo">
-      </div>
+    <div class="md:w-1/3 sm:w-1/2 w-[92%] bg-white text-center p-5 rounded-md">
+      
+      <LogoHome />
       
       <h1 class="text-2xl font-bold mb-8">Feedback Management System</h1>
       
@@ -19,3 +18,13 @@
     </div>
   </div>
 </template>
+
+<script>
+import LogoHome from '@/components/LogoHome.vue';
+
+export default {
+  components: {
+    LogoHome
+  }
+}
+</script>
