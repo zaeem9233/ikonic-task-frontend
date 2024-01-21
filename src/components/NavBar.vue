@@ -12,13 +12,13 @@
             <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
 
                <li>
-                  <router-link class="hover:text-gray-500" to="/feedbacks">
+                  <router-link @click="linkClicked" class="hover:text-gray-500" to="/feedbacks">
                      Feedbacks
                   </router-link>
                </li>
                
                <li>
-                  <router-link class="hover:text-gray-500" to="/create">
+                  <router-link @click="linkClicked" class="hover:text-gray-500" to="/create">
                      Create
                   </router-link>
                </li>
@@ -59,6 +59,9 @@
          },
          onToggleMenu(){
             this.isMenuOpen = !this.isMenuOpen;
+         },
+         linkClicked(){
+            this.isMenuOpen = false;
          }
       },
    }
