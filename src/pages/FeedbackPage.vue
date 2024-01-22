@@ -20,7 +20,7 @@
       <!-- Display Existing Comments -->
       <div v-if="fb.comment.length > 0">
         <div v-for="cmnt in fb.comment" :key="cmnt.id" class="bg-gray-50 p-4 rounded-md mb-2 shadow-sm">
-          <p class="text-gray-700">{{ cmnt.comment }}</p>
+          <div v-html="cmnt.comment"></div>
           <div class="text-gray-500 mt-2">
             <p>Posted on: {{ cmnt.created_at }}</p>
             <p>Posted by: {{ cmnt.user.name }}</p>
@@ -35,9 +35,15 @@
       <div v-if="showNotification" class="fixed bottom-0 right-0 m-4 p-4 bg-green-500 hover:bg-green-700 text-white rounded shadow">
         {{ notificationMessage }}
       </div>
-      <form @submit.prevent="postComment" class="mt-4">
-        <label for="comment" class="block text-sm font-medium text-gray-700">Your Comment:</label>
+
+      
+      <h6 for="comment" class="block text-md font-medium text-gray-700 mt-2">Post Comment</h6>
+      <p class="text-md text-yellow-500">Note: You can use bold, italic and code tags for better readable comment. </p>
+      <form @submit.prevent="postComment" class="">
         <textarea v-model="comment" id="comment" name="comment" rows="4" class="custom-input"></textarea>
+        <div v-if="errors.comment" class="flex items-center justify-start">
+          <span class="text-red-500">{{ errors.comment[0] }}</span>
+        </div>
         <button type="submit" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md">Post Comment</button>
       </form>
     </div>
@@ -56,6 +62,11 @@ export default {
       errors: [],
       feedback: [],
       feedbackId: this.$route.params.feedbackId,
+      formats: {
+        bold: false,
+        italic: false,
+        code: false,
+      }
     };
   },
   mounted(){
@@ -72,7 +83,6 @@ export default {
           },
         });
         this.feedback = response.data.feedback;
-        console.log(this.feedback);
       }catch(error){
         console.log('Error Fecthing Feedback:', error);
       }
@@ -113,7 +123,7 @@ export default {
     },
     resetForm() {
       this.comment = '';
-    },
+    }
   },
 };
 </script>
