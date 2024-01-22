@@ -39,8 +39,9 @@
       
       <h6 for="comment" class="block text-md font-medium text-gray-700 mt-2">Post Comment</h6>
       <p class="text-md text-yellow-500">Note: You can use bold, italic and code tags for better readable comment. </p>
+      <p class="text-md text-yellow-500">Note: You can also mention other users by @ and first three letters of user's name. </p>
       <form @submit.prevent="postComment" class="">
-        <textarea v-model="comment" id="comment" name="comment" rows="4" class="custom-input"></textarea>
+        <textarea v-model="comment" @input="handleInput" id="comment" name="comment" rows="4" class="custom-input"></textarea>
         <div v-if="errors.comment" class="flex items-center justify-start">
           <span class="text-red-500">{{ errors.comment[0] }}</span>
         </div>
@@ -83,6 +84,7 @@ export default {
           },
         });
         this.feedback = response.data.feedback;
+        // console.log(this.feedback);
       }catch(error){
         console.log('Error Fecthing Feedback:', error);
       }
@@ -123,6 +125,28 @@ export default {
     },
     resetForm() {
       this.comment = '';
+    },
+    async handleInput(){
+      let mentions = this.comment.match(/@\w+/g);
+      if(mentions){
+        const lastMention = mentions[mentions.length - 1];
+        if (this.comment.indexOf(lastMention) + lastMention.length < this.comment.length && this.comment[this.comment.indexOf(lastMention) + lastMention.length] === ' ') {
+          console.log('Not mentioning');
+        } else {
+          let mention = mentions[0].replace(/@/g, '');
+          const vals = this.feedback;
+          vals.forEach(e => {
+            e.comment.forEach(ee => {
+              if (ee.user.name.substring(0, 3) === mention) {
+                mentions = ee.user.name;
+                this.comment = this.comment.replace(new RegExp(mention, 'g'), ee.user.name);
+              }
+            });
+          });
+
+        }
+
+      }
     }
   },
 };
