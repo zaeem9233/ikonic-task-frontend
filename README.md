@@ -5,7 +5,7 @@
 ### Clone the Repository
 
 ```
-git clone https://github.com/zaeem9233/ikonic-task-backend
+git clone https://github.com/zaeem9233/ikonic-task-frontend
 ```
 
 ### Change Directory
