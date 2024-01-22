@@ -32,7 +32,7 @@
       </div>
 
       <!-- Comment Form -->
-      <div v-if="showNotification == true" class="fixed bottom-0 right-0 m-4 p-4 bg-green-500 text-white rounded shadow">
+      <div v-if="showNotification" class="fixed bottom-0 right-0 m-4 p-4 bg-green-500 hover:bg-green-700 text-white rounded shadow">
         {{ notificationMessage }}
       </div>
       <form @submit.prevent="postComment" class="mt-4">
@@ -93,6 +93,16 @@ export default {
         });
         this.resetForm();
         this.fetchFeedbackDetails();
+
+        this.showNotification = true;
+        this.notificationMessage = 'Comment posted successfully!';
+
+        // Reset notification after a delay
+        setTimeout(() => {
+          this.showNotification = false;
+          this.notificationMessage = '';
+        }, 3000); 
+
       }catch(error){
         if (error.response && error.response.status === 422) {
           this.errors = error.response.data.errors;
