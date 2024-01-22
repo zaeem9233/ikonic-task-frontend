@@ -1,8 +1,16 @@
 # ikonic-task
 
 ## Project setup
+
+### Clone the Repository
+
 ```
-npm install
+git clone https://github.com/zaeem9233/ikonic-task-backend
+```
+
+### Change Directory
+```
+cd ikonic-task-backend
 ```
 
 ### Compiles and hot-reloads for development
@@ -19,6 +27,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
