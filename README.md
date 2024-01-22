@@ -13,6 +13,11 @@ git clone https://github.com/zaeem9233/ikonic-task-frontend
 cd ikonic-task-backend
 ```
 
+### Get Dependencies
+```
+npm install
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
