@@ -8,7 +8,9 @@
         <div class="flex flex-col justify-between items-center mb-2 border-t border-gray-200 pt-2 md:flex-row">
           <div class="mb-2 sm:mb-0 md:text-left">
             <h2 class="text-xl font-bold">
-              {{ feedback.title }}
+              <router-link :to="`/feedback/${feedback.id}`">
+                {{ feedback.title }}
+              </router-link>
             </h2>
             <p class="text-gray-700">Category: {{ feedback.category.name }}</p>
           </div>
