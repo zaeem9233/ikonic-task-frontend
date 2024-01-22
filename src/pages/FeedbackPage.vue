@@ -91,12 +91,8 @@ export default {
             'Content-Type': 'application/json',
           }
         });
-        console.log('posted');
         this.resetForm();
-        setTimeout(() => {
-          this.showNotification = false;
-          this.notificationMessage = 'Comment has been posted!';
-        }, 3000);
+        this.fetchFeedbackDetails();
       }catch(error){
         if (error.response && error.response.status === 422) {
           this.errors = error.response.data.errors;
